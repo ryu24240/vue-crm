@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\InertiaTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,23 @@ use Inertia\Inertia;
 |
 */
 
+
 // 以下動確のためにInertiaTest作成
 Route::get('/inertia-test', function () {
     return Inertia::render('InertiaTest');
 });
+
+
+
+//名前付きルーティング
+//Route::get(URL, [呼び出すコントローラクラス, 呼び出すコントローラ内のメソッド])->name(付与したい名前)
+//このURLにアクセスされたら、このコントローラー内のこのメソッドを呼び出す、を記載
+
+Route::get('/inertia/index', [InertiaTestController::class, 'index'])->name('inertia.index');
+Route::post('/inertia', [InertiaTestController::class, 'store'])->name('inertia.store');
+Route::get('/inertia/show/{id}', [InertiaTestController::class, 'show'])->name('inertia.show');
+
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
