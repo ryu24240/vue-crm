@@ -15,6 +15,11 @@ class InertiaTestController extends Controller
         return Inertia::render('Inertia/Index');
     }
 
+    public function create()
+    {
+        return Inertia::render('Inertia/Create');
+    }
+
     public function show($id)
     {
         // ddと記載するとLaravel側のデバック起動(ここで処理が止まって変数の中身が見える)
@@ -29,6 +34,12 @@ class InertiaTestController extends Controller
     // inputタグでの入力値をrequest変数で受け取る
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => ['required', 'max:20'],
+            'content' => ['required'],
+        ]);
+
         $inertiaTest = new InertiaTest;
         $inertiaTest->title = $request->title;
         $inertiaTest->content = $request->content;

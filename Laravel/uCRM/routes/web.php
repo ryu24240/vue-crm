@@ -30,6 +30,7 @@ Route::get('/inertia-test', function () {
 //このURLにアクセスされたら、このコントローラー内のこのメソッドを呼び出す、を記載
 
 Route::get('/inertia/index', [InertiaTestController::class, 'index'])->name('inertia.index');
+Route::get('/inertia/create', [InertiaTestController::class, 'create'])->name('inertia.create');
 Route::post('/inertia', [InertiaTestController::class, 'store'])->name('inertia.store');
 Route::get('/inertia/show/{id}', [InertiaTestController::class, 'show'])->name('inertia.show');
 
