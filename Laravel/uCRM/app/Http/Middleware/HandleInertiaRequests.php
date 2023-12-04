@@ -39,6 +39,11 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            // Controllerにてセッションに保存したメッセージの取得
+            'flash' => [
+                // fn()を挟むことで必要な時のみ実行される(部分リロード)
+                'message' => fn() => $request->session()->get('message')
+            ]
         ]);
     }
 }

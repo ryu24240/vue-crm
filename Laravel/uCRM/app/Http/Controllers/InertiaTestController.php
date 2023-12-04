@@ -47,6 +47,9 @@ class InertiaTestController extends Controller
         $inertiaTest->save();
 
         // テーブルに保存した後、以下でリダイレクト処理
-        return to_route('inertia.index');
+        // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
+        return to_route('inertia.index')->with([
+            'message' => '登録しました。'
+        ]);
     }
 }
