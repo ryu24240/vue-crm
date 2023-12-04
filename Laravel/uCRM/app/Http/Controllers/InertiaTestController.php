@@ -12,7 +12,10 @@ class InertiaTestController extends Controller
     {
         //第一引数にコンポーネント名、第二引数にプロパティ配列
         //コンポーネント呼び出しかつコンポーネントにプロパティ配列を渡すことで画面に値表示できる
-        return Inertia::render('Inertia/Index');
+        return Inertia::render('Inertia/Index', [
+            // DBテーブルに入っている情報をすべて表示
+            'blogs' => InertiaTest::all()
+        ]);
     }
 
     public function create()
