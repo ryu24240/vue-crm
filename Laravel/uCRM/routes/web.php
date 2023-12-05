@@ -24,6 +24,11 @@ Route::get('/inertia-test', function () {
 });
 
 
+// 以下動確のためにInertiaTest作成
+Route::get('/component-test', function () {
+    return Inertia::render('ComponentTest');
+});
+
 
 //名前付きルーティング
 //Route::get(URL, [呼び出すコントローラクラス, 呼び出すコントローラ内のメソッド])->name(付与したい名前)
