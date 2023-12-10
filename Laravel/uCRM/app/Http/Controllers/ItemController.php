@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use Inertia\Inertia;
 
 class ItemController extends Controller
 {
@@ -15,7 +16,13 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        // DBからダミーデータを取得
+        // Item::all()にすると全件取得できる(selectの場合は末尾にgetが必要)
+        // ddはLaravelでのデバック(取得したデータの中身が見れる)
+        $items = Item::select('id', 'name' , 'price', 'is_selling')->get();
+        return Inertia::render('Items/Index', [
+            'items' => $items
+        ]);
     }
 
     /**
@@ -25,7 +32,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Items/Create');
     }
 
     /**
