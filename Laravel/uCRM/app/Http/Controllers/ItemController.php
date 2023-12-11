@@ -43,8 +43,21 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        Item::create([
+        'name' => $request->name,
+        'memo' => $request->memo,
+        'price' => $request->price,
+    ]);
+
+        // $items->save();
+
+                // テーブルに保存した後、以下でリダイレクト処理
+        // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
+        return to_route('items.index')->with([
+            'message' => '商品を登録しました。'
+        ]);
     }
+    
 
     /**
      * Display the specified resource.
