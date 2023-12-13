@@ -23,8 +23,12 @@ class StoreItemRequest extends FormRequest
      */
     public function rules()
     {
+        // 以下商品登録時のバリデーションチェック
         return [
-            //
+            'name' => ['required', 'max:50'],
+            'memo' => ['required', 'max:255'],
+            'price' => ['required', 'numeric'],
+            
         ];
     }
 }

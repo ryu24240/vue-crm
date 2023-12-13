@@ -42,7 +42,8 @@ class HandleInertiaRequests extends Middleware
             // Controllerにてセッションに保存したメッセージの取得
             'flash' => [
                 // fn()を挟むことで必要な時のみ実行される(部分リロード)
-                'message' => fn() => $request->session()->get('message')
+                'message' => fn() => $request->session()->get('message'),
+                'status' => fn() => $request->session()->get('status')
             ]
         ]);
     }

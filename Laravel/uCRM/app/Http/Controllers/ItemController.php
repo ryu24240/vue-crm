@@ -51,10 +51,11 @@ class ItemController extends Controller
 
         // $items->save();
 
-                // テーブルに保存した後、以下でリダイレクト処理
+        // テーブルに保存した後、以下でリダイレクト処理
         // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
         return to_route('items.index')->with([
-            'message' => '商品を登録しました。'
+            'message' => '商品を登録しました。',
+            'status' => 'success'
         ]);
     }
     

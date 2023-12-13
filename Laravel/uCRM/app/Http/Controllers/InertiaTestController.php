@@ -52,7 +52,7 @@ class InertiaTestController extends Controller
         // テーブルに保存した後、以下でリダイレクト処理
         // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
         return to_route('inertia.index')->with([
-            'message' => '登録しました。'
+            'message' => '登録しました。',
         ]);
     }
 }
