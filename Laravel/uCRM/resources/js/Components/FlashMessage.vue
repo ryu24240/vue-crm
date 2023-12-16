@@ -1,6 +1,4 @@
-<script setup>
-debugger;
-</script>
+<script setup></script>
 
 <template>
     <div
