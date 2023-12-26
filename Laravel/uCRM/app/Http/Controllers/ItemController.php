@@ -97,7 +97,21 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        // $item: DB上のデータ, $request: フォームに入力された情報
+        // dd($item->name, $request->name);
+
+        $item->name = $request->name;
+        $item->memo = $request->memo;
+        $item->price = $request->price;
+        $item->is_selling = $request->is_selling;
+        $item->save();
+        
+        // 更新した後、以下でリダイレクト処理
+        // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
+        return to_route('items.index')->with([
+            'message' => '商品情報を更新しました。',
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -108,6 +122,14 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        // 削除した後、以下でリダイレクト処理
+        // リダイレクトの際にフラッシュメッセージを作成、セッションに保存
+        return to_route('items.index')->with([
+            'message' => '商品情報を削除しました。',
+            'status' => 'danger'
+        ]);
+
     }
 }
